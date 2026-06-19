@@ -1,0 +1,16 @@
+# Render Blueprint for the NeuroSync PD lite cloud demo.
+# Must live at the repo root for Render to detect it.
+# New + > Blueprint > select this repo > Apply.
+services:
+  - type: web
+    name: neurosync-pd-demo
+    runtime: python
+    plan: free                      # upgrade to "starter" if memory is tight
+    rootDir: .
+    buildCommand: pip install -r deploy/requirements.txt
+    startCommand: uvicorn deploy.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      - key: MPLBACKEND          # headless matplotlib for PPI graph rendering
+        value: "Agg"
