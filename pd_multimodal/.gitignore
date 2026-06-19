@@ -1,0 +1,48 @@
+# Virtual environment
+pd_env/
+venv/
+env/
+
+# Model weights (too large for GitHub — download on target machine)
+models/
+*.pth
+*.pt
+*.bin
+*.gguf
+*.safetensors
+
+# HuggingFace cache
+.cache/
+
+# Generated outputs
+data/outputs/
+*.png
+*.jpg
+
+# User data (never commit patient data)
+data/knowledge_base/
+data/vector_db/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

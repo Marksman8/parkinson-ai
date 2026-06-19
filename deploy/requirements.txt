@@ -1,0 +1,12 @@
+# Lite cloud-demo dependencies (NO torch / transformers / chromadb).
+# Module 0 relevance falls back to keyword matching when ML libs are absent.
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+requests>=2.31.0
+networkx>=3.2.0
+matplotlib>=3.8.0
+reportlab>=4.0.0
+pdfminer.six>=20221105
+numpy>=1.26.0
+scipy>=1.11.0

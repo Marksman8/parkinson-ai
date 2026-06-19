@@ -1,0 +1,42 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pd_env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Data and models
+data/
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.pb
+
+# Logs
+logs/
+*.log
+
+# Windows specific
+Desktop.ini
+Thumbs.db
+
+# Deploy scratch + vector stores (runtime-generated; not for the repo)
+deploy_data/
+**/eval_vector_db*/
+*.sqlite
+
+# NOTE: keep pd_clinical/eval/results/ and pd_rag/eval/results/ committed —
+# the cloud demo serves those tables + figures.

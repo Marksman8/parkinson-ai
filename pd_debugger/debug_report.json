@@ -1,0 +1,148 @@
+{
+  "timestamp": "2026-05-12T11:57:11.286623",
+  "system": {
+    "os": "Windows",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.4 (tags/v3.14.4:23116f9, Apr  7 2026, 14:10:54) [MSC v.1944 64 bit (AMD64)]",
+    "cwd": "C:\\Users\\ajsal\\Downloads\\parkinsons-ai-main\\parkinsons-ai-main\\pd_debugger",
+    "root": "C:\\Users\\ajsal\\Downloads\\parkinsons-ai-main\\parkinsons-ai-main"
+  },
+  "summary": {
+    "total": 16,
+    "ok": 11,
+    "warnings": 2,
+    "errors": 2,
+    "skipped": 1,
+    "health": "critical"
+  },
+  "checks": [
+    {
+      "name": "Python version",
+      "status": "ok",
+      "message": "Python 3.14.4",
+      "detail": "",
+      "fix": "",
+      "duration": 0.0
+    },
+    {
+      "name": "Virtual environment",
+      "status": "ok",
+      "message": "Active: C:\\Users\\ajsal\\Downloads\\parkinsons-ai-main\\.venv",
+      "detail": "",
+      "fix": "",
+      "duration": 0.001
+    },
+    {
+      "name": "GPU / CUDA",
+      "status": "warning",
+      "message": "CUDA not available \u2014 running on CPU",
+      "detail": "",
+      "fix": "Install CUDA 12.1 and matching PyTorch build.",
+      "duration": 0.003
+    },
+    {
+      "name": "VRAM budget",
+      "status": "skip",
+      "message": "No CUDA GPU detected",
+      "detail": "",
+      "fix": "",
+      "duration": 0.0
+    },
+    {
+      "name": "Disk space",
+      "status": "ok",
+      "message": "679.2GB free  (34% used)",
+      "detail": "",
+      "fix": "",
+      "duration": 0.004
+    },
+    {
+      "name": "Port availability",
+      "status": "ok",
+      "message": "Port 8000 (in use)  |  Port 8001 (in use)",
+      "detail": "",
+      "fix": "",
+      "duration": 0.004
+    },
+    {
+      "name": "Python packages",
+      "status": "ok",
+      "message": "All 13 required packages installed",
+      "detail": "{\n  \"torch\": \"2.11.0+cpu\",\n  \"transformers\": \"5.5.4\",\n  \"fastapi\": \"0.135.3\",\n  \"uvicorn\": \"0.44.0\",\n  \"scipy\": \"1.17.1\",\n  \"numpy\": \"2.4.4\",\n  \"matplotlib\": \"3.10.8\",\n  \"pdfminer\": \"20260107\",\n  \"chromadb\": \"1.5.7\",\n  \"sentence_transformers\": \"5.4.1\",\n  \"networkx\": \"3.6.1\",\n  \"requests\": \"2.33.1\",\n  \"reportlab\": \"4.4.10\"\n}",
+      "fix": "",
+      "duration": 0.024
+    },
+    {
+      "name": "Folder structure",
+      "status": "error",
+      "message": "7 required files missing",
+      "detail": "  MISSING: core/multimodal_engine.py\n  MISSING: modules/module6_ode/ode_simulator.py\n  MISSING: modules/module6_ode/visualizer.py\n  MISSING: modules/module7_router/router.py\n  MISSING: api/main.py\n  MISSING: config.py\n  MISSING: requirements.txt",
+      "fix": "Re-download and extract the project zip.",
+      "duration": 0.005
+    },
+    {
+      "name": "Core module imports",
+      "status": "error",
+      "message": "3 import failures",
+      "detail": "config: No module named 'config'\nmodules.module6_ode.ode_simulator: No module named 'modules'\nmodules.module7_router.router: No module named 'modules'",
+      "fix": "Check for syntax errors or missing dependencies.",
+      "duration": 0.021
+    },
+    {
+      "name": "Model weights (Qwen2-VL-2B)",
+      "status": "ok",
+      "message": "Found in HF cache (4.4GB)",
+      "detail": "",
+      "fix": "",
+      "duration": 0.012
+    },
+    {
+      "name": "ODE engine (SciPy)",
+      "status": "ok",
+      "message": "RK45 OK \u2014 8 steps",
+      "detail": "",
+      "fix": "",
+      "duration": 0.039
+    },
+    {
+      "name": "Module 2 API (port 8000)",
+      "status": "ok",
+      "message": "Running \u2014 model: Qwen/Qwen2-VL-2B-Instruct",
+      "detail": "{\n  \"status\": \"ok\",\n  \"model\": \"Qwen/Qwen2-VL-2B-Instruct\",\n  \"modules\": [\n    \"chat\",\n    \"mri\",\n    \"report\",\n    \"gene\",\n    \"drug\",\n    \"simulation\",\n    \"router\"\n  ]\n}",
+      "fix": "",
+      "duration": 2.118
+    },
+    {
+      "name": "Module 0 API (port 8001)",
+      "status": "ok",
+      "message": "Running",
+      "detail": "",
+      "fix": "",
+      "duration": 2.074
+    },
+    {
+      "name": "SQLite memory (pd_memory.db)",
+      "status": "ok",
+      "message": "3 sessions, 15 gene records",
+      "detail": "",
+      "fix": "",
+      "duration": 0.032
+    },
+    {
+      "name": "ChromaDB (RAG)",
+      "status": "warning",
+      "message": "Vector DB not created yet",
+      "detail": "",
+      "fix": "curl -X POST http://localhost:8000/api/ingest",
+      "duration": 0.001
+    },
+    {
+      "name": "External APIs (KEGG / STRING)",
+      "status": "ok",
+      "message": "KEGG: HTTP 200  |  STRING: HTTP 200",
+      "detail": "",
+      "fix": "",
+      "duration": 5.653
+    }
+  ]
+}
