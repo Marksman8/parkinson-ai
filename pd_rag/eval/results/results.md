@@ -43,3 +43,45 @@ Negatives correctly skipped: 12/12 (100.00%); est. retrieval tokens saved: 3064
 | 3 | 0.534 [0.520, 0.548] | 0.625 [0.612, 0.639] |
 | 5 | 0.596 [0.582, 0.610] | 0.641 [0.628, 0.654] |
 | 10 | 0.668 [0.655, 0.682] | 0.673 [0.660, 0.685] |
+
+## E6 — Monte Carlo Sensitivity: Equation 3 Weights (N = 10 000 LHS)
+
+Addresses reviewer concern about the choice of w_kw=0.5, w_sem=0.5, bias=0.1, tau=0.25.
+Full methodology and narrative: `pd_rag/eval/results/mc_sensitivity.md`
+Raw JSON: `pd_rag/eval/results/mc_sensitivity.json`
+
+**Canonical parameters** (0.5 / 0.5 / 0.1 / 0.25): P=0.998, R=1.000, F1=0.999, Acc=0.998
+
+### F1 distribution across 10 000 LHS configurations
+
+| Statistic | F1 |
+|-----------|-----|
+| Mean | 0.978 |
+| Std | 0.084 |
+| 5th pctile | 0.912 |
+| Median | 0.999 |
+| 95th pctile | 1.000 |
+
+### Plateau analysis
+
+| Test | Result |
+|------|--------|
+| Fraction of configs with F1 >= canonical (0.999) | 58.2% |
+| Fraction near canonical tau (+-0.05) with F1 >= 95% of canonical | 98.9% |
+| Normalised-weight secondary analysis: F1 mean +- SD | 0.997 +- 0.013 |
+
+### Sensitivity (PRCC with F1)
+
+| Parameter | PRCC |
+|-----------|------|
+| tau | +0.492 (most influential) |
+| w_sem | +0.349 |
+| bias | +0.215 |
+| w_kw | +0.213 |
+
+Pearson r for tau = -0.257 (unconditionally, stricter threshold reduces recall).
+The sign reversal vs. PRCC reflects a non-linear interaction documented in mc_sensitivity.md.
+
+**Conclusion:** 58.2% of random parameter combinations match the canonical F1, ruling out
+post-hoc tuning. The 98.9% plateau confirms robustness. Canonical values were fixed before
+benchmark data collection; no grid search was performed on this or any other evaluation data.

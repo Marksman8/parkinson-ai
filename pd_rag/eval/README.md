@@ -33,6 +33,7 @@ collections are never touched) and runs:
 | E3 | Faithfulness | groundedness, hallucination rate, answer relevancy + McNemar/Wilcoxon |
 | E4 | Gating | `SmartRAGTrigger` P/R/F1 vs always/never-retrieve + token savings |
 | E5 | Ablations | retrieval threshold, top_k, embedder, chunk size |
+| E6 | MC sensitivity | Equation 3 weight robustness, PRCC, plateau analysis (N=10 000 LHS) |
 
 ## Run it
 
@@ -52,6 +53,11 @@ python -m pd_rag.eval.run_eval --model Qwen/Qwen2-VL-2B-Instruct --gen-sample 60
 python -m pd_rag.eval.run_eval --skip-generation \
     --ablate-embedder "sentence-transformers/all-MiniLM-L6-v2,BAAI/bge-small-en-v1.5,NeuML/pubmedbert-base-embeddings" \
     --ablate-chunk "128,256,400,512"
+
+# E6 — Monte Carlo sensitivity (no GPU needed; ~1 s on CPU)
+python -m pd_rag.eval.monte_carlo_sensitivity \
+    --n-samples 10000 --seed 42 \
+    --out-json pd_rag/eval/results/mc_sensitivity.json
 ```
 
 Run from the **repo root** so `pd_rag` is importable, or `cd pd_rag` and call the
